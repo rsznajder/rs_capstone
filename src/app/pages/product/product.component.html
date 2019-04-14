@@ -1,0 +1,51 @@
+<div class="page-large container">
+    <div *ngIf="getResponseType() === 1">
+        <div id="product-row" class="d-flex align-content-center flex-row">
+            <div id="product-div-img" class="p-2 item-width50">
+                <div id="product-div-div-img" class="float-right">
+                    <img id="product-img" src="{{selectedProductResponse.product.imagelink}}" class="img-fluid" alt="Product image">
+                </div>
+            </div>
+            <div class="p-2 item-width50">
+                <div class="page-medium-bottommargin">&nbsp;</div>
+                <p class="font-weight-bold page-title">{{selectedProductResponse.product.name}}</p>
+                <p class="page-desc">Rating: {{selectedProductResponse.product.rating}} / 5</p>
+                <p class="page-desc">{{selectedProductResponse.product.description}}</p>
+                <div class="page-medium-bottommargin">&nbsp;</div>
+                <p class="font-weight-bold page-title">Price: {{selectedProductResponse.product.price | currency:'USD':'symbol':'1.2-4'}}</p>
+                <p class="page-desc">Stock: {{selectedProductResponse.product.stock | number:'1.0-2'}}</p>
+                <div class="page-medium-bottommargin">&nbsp;</div>
+                <div class="d-flex flex-row align-items-center">
+                    <span id="product-qty">Qty</span>
+                    <div id="product-counter-group">
+                        <app-counterinput [(counter)]="productQuantity" (counterChange)="onCounterChange($event)"></app-counterinput>
+                    </div>
+                    <button id="product-addtocart" type="button" class="btn btn-warning" (click)="addToCart()" 
+                            [disabled]="isAddToCartDisabled()">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-end">
+            <div class="float-right">
+                <button class="btn btn-primary" (click)="goBack()">Go back</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="getResponseType() === 2">
+        <p class="font-weight-bold page-title">We are sorry,</p>
+        <p class="page-desc">Product with the selected name <b>'{{selectedProductName.toLocaleUpperCase()}}'</b> does not exist in our database.</p>
+    </div>
+    <div *ngIf="getResponseType() === 3">
+        <p class="font-weight-bold page-title">Please wait,</p>
+        <p class="page-desc">We are loading product list from the database.</p>
+    </div>
+    <div *ngIf="getResponseType() === 4">
+        <p class="font-weight-bold page-title">Problem occured,</p>
+        <p class="page-desc">Product name cannot be empty.</p>
+    </div>
+    <div *ngIf="getResponseType() === 5">
+        <p class="font-weight-bold page-title">Problem occured,</p>
+        <p class="page-desc">There was an error during reading the product in the database.</p>
+        <p class="page-desc">Please, try again.</p>
+    </div>
+</div>

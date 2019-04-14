@@ -1,0 +1,11 @@
+#removeRow {
+    color: #6c757d;
+    border-color: #ced4da !important;
+    box-shadow: none !important;
+}
+
+#removeRow:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}

@@ -1,0 +1,13 @@
+<div *ngIf="list.length > 0">
+  <ul>
+    <ng-template #recursiveList let-list>
+      <li *ngFor="let item of list" (click)="listClick($event, item)">
+        <span [ngClass]="{'selected': selectedItem == item}">{{item.name}}</span>
+        <ul *ngIf="item.subcategories.length > 0  && item.showSubcategories" [ngClass]="{ 'subfolder': selectedItem == item }">
+          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.subcategories }"></ng-container>
+        </ul>
+      </li>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list }"></ng-container>
+  </ul>
+</div>

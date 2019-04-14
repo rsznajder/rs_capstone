@@ -1,0 +1,88 @@
+<div class="page-large-no-margin container">
+    <h1 id="cart-title">Shop All</h1>
+    <div id="shopping-container" class="d-flex flex-row flex-wrap">
+        <div id="shopping-menu" class="d-flex flex-column align-items-start flex-nowrap">
+            <div id="shopping-menu-div">
+              <div id="shopping-menu-div-div">
+                <app-treeview [list]="menuList" (treeviewChange)="treeviewChange($event)"></app-treeview>
+              </div>
+            </div>
+        </div>
+        <div id="shopping-products" class="d-flex flex-column align-items-start flex-nowrap">
+            <div id="shopping-products-header">
+                <div id="shopping-products-header-div">
+                  <div id="shopping-products-header-div-span">
+                    <div *ngIf="selectedCategory && selectedSubcategory">
+                      <span class="float-left">{{selectedCategory}} / {{selectedSubcategory}}</span>
+                      <span class="float-left pr-4">Items: {{numberOfItemsFiltered}} out of {{numberOfItemsInCategory}}</span>
+                    </div>
+                    <div *ngIf="!(selectedCategory && selectedSubcategory)">
+                        <span>&nbsp;</span>
+                    </div>
+                  <div class="clearfix"></div>
+                  </div>
+                  <div class="float-left">
+                    <span class="pr-2">In stock only</span>
+                    <app-togglebutton [checked]="selectedInStockOnly" (checkboxChange)="inStockChange($event)"></app-togglebutton>
+                  </div>
+                  <div class="d-inline-flex flex-row align-items-baseline flex-nowrap float-right">
+                    <span class="p-2">Sort</span>
+                    <select [(ngModel)]="selectedSortBy" class="form-control" (change)="sortByChange($event)">
+                        <option>None</option>
+                        <option>Price</option>
+                        <option>Alphabetical</option>
+                        <option>Rating</option>
+                    </select>
+                  </div>
+                </div>
+            </div>
+            <div id="shopping-products-list" class="d-flex flex-row flex-wrap">
+                <div *ngFor="let product of filteredProductList; let i = index">
+                    <div class="shopping-product">
+                        <div id="shopping-product-div">
+                            <a [routerLink]="['/product']" [queryParams]="{ name:product.name }">
+                                <img id="shopping-product-div-img" [src]="product.imagelink" [alt]="product.name">
+                            </a>
+                        </div>
+                        <div id="shopping-product-desc">
+                            <h2 class="mb-0">
+                                <a [routerLink]="['/product']" [queryParams]="{ name:product.name }" class="mb-0">
+                                    {{ product.name | titlecase }}
+                                </a>
+                            </h2>
+                            <div class="w-100 mb-2">
+                              <p class="page-desc mb-0 float-left">Rate: {{product.rating}} / 5</p>
+                              <p class="page-desc mb-0 float-right">Stock: {{product.stock | number:'1.0-2'}}</p>
+                            </div>
+                            <div id="shopping-product-desc-p-div">
+                              <p id="shopping-product-desc-p">{{ product.description }}</p>
+                            </div>
+                            <div id="shopping-product-add">
+                                <div class="w-100 mb-0">
+                                    <div *ngIf="product.addToCartMessage!=='success' && product.addToCartMessage!=='error' && 
+                                              product.quantityInCart>0">
+                                      <p class="page-desc float-left mb-1">In your cart: {{product.quantityInCart | number:'1.0-2'}}</p>
+                                    </div>
+                                    <div *ngIf="product.addToCartMessage==='success'">
+                                      <p class="page-desc text-success float-left mb-1">Product added to cart.</p>
+                                    </div>
+                                    <div *ngIf="product.addToCartMessage==='error'">
+                                      <p class="page-desc text-danger float-left mb-1">Product not added to cart!</p>
+                                    </div>
+                                    <p class="font-weight-bold page-desc float-right mb-1">Price: {{product.price | currency:'USD':'symbol':'1.2-4'}}</p>
+                                </div>
+                                <div class="d-flex flex-row align-items-center float-right">
+                                    <div id="product-counter-group">
+                                        <app-counterinput [(counter)]="product.addToCartQuantity"></app-counterinput>
+                                    </div>
+                                    <button id="product-addtocart" type="button" class="btn btn-warning" 
+                                        (click)="addToCart(product.name, product.addToCartQuantity)">Add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

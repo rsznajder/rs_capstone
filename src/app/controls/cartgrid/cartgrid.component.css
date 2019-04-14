@@ -1,0 +1,5 @@
+#cartgrid tbody tr:hover {
+    color: #212529 !important;
+    /*background-color: rgba(0,0,0,.015) !important;*/
+    background-color: #f5f5f5;
+}

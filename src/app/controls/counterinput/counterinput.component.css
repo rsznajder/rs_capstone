@@ -1,0 +1,21 @@
+#increment {
+    border-color: #ced4da !important;
+    box-shadow: none !important;
+}
+
+#increment:hover {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+#decrement {
+    border-color: #ced4da !important;
+    box-shadow: none !important;
+}
+
+#decrement:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}

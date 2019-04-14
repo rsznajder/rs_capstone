@@ -1,0 +1,38 @@
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { CartProduct } from 'src/app/rest/dto/cartproduct';
+import { CartGridRowEvent } from './cartgrid-row.event';
+import { CartGridRowEventTypes } from './cartgrid-roweventtypes.enum';
+
+@Component({
+  selector: '[app-cartgrid-row]',
+  templateUrl: './cartgrid-row.component.html',
+  styleUrls: ['./cartgrid-row.component.css']
+})
+export class CartGridRowComponent implements OnInit {
+  @Input() product: CartProduct;
+  @Output() private rowChange = new EventEmitter<CartGridRowEvent>();
+  productQuantity = 0;
+
+  constructor() { }
+
+  onCounterChange(event: number) {
+    if (event && event > 0) {
+      this.productQuantity = <number>event;
+      const productClone = <CartProduct>Object.assign({}, this.product);
+      this.rowChange.emit(new CartGridRowEvent(productClone, event, CartGridRowEventTypes.quantityChanged));
+    }
+    console.log('product ' + this.product.name + ' onCounterChange: ' + this.productQuantity);
+  }
+
+  onRemoveClick() {
+    const productClone = <CartProduct>Object.assign({}, this.product);
+    this.rowChange.emit(new CartGridRowEvent(productClone, null, CartGridRowEventTypes.rowRemoved));
+    console.log('product ' + this.product.name + ' remove ');
+  }
+
+  ngOnInit() {
+    if (this.product) {
+      this.productQuantity = this.product.quantity;
+    }
+  }
+}

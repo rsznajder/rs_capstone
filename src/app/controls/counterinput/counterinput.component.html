@@ -1,0 +1,7 @@
+<div class="input-group">
+    <input type="text" class="form-control" [ngModel]="counter" (ngModelChange)="onValueChange($event)"
+        min="1" inputmode="numeric" pattern="[0-9]*" digitOnly>
+    <div class="input-group-append">
+      <button id="increment" class="btn btn-outline-secondary" type="button" (click)="increment()">+</button>
+      <button id="decrement" class="btn btn-outline-secondary" type="button" (click)="decrement()">-</button>
+</div>

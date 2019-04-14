@@ -1,0 +1,40 @@
+<div class="page-large-no-margin container">
+  <div class="row ml-2 mr-2">
+    <h1 class="pl-2">Welcome to Grocery Cloud</h1>
+  </div>
+  <div class="row ml-2 mr-2 mb-2">
+    <p class="page-desc pl-2">We have been on the market for 25 years.</p>
+    <span class="ml-auto pr-2">
+        <span class="mr-2">Toggle slide show</span>
+        <app-togglebutton class="mr-2" [checked]="!selectedNoSlideShow" (checkboxChange)="toggleSlideShow($event)"></app-togglebutton>
+        <button [routerLink]="['/shopping']" class="btn btn-primary mr-2 float-right" type="button">Shop All</button>
+    </span>
+  </div>
+  <div class="carousel-div">
+  <carousel [interval]="carouselInterval" [noWrap]="selectedNoSlideShow" [noPause]="true" class="carousel">
+    <slide>
+      <div class="slide-div">
+        <a [routerLink]="['/product']" [queryParams]="{ name: 'Baby Bottle' }"> <!--[queryParams]={ name:product.name }--> 
+          <img src="assets/img/baby_care/babybottle.png" alt="first slide" class="img-fluid home-img">
+        </a>
+        <img src="assets/img/baby_care/babydress.png" alt="second slide" class="img-fluid home-img">
+        <img src="assets/img/baby_care/babymonitor.png" alt="third slide" class="img-fluid home-img">
+      </div>
+    </slide>
+    <slide>
+      <div class="slide-div">
+        <img src="assets/img/beverages/applejuice.png" alt="first slide" class="img-fluid home-img">
+        <img src="assets/img/beverages/bananaorangejuice.png" alt="second slide" class="img-fluid home-img">
+        <img src="assets/img/beverages/cranberryjuice.png" alt="third slide" class="img-fluid home-img">
+      </div>
+    </slide>
+    <slide>
+      <div class="slide-div">
+        <img src="assets/img/household_supplies/airfreshner.png" alt="first slide" class="img-fluid home-img">
+        <img src="assets/img/household_supplies/cleaningliquid.png" alt="second slide" class="img-fluid home-img">
+        <img src="assets/img/household_supplies/disinfectantspray.png" alt="third slide" class="img-fluid home-img">
+      </div>
+    </slide>
+  </carousel>
+  </div>
+</div>

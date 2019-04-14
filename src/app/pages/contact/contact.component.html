@@ -1,0 +1,90 @@
+<div class="page-medium container">
+<section>
+  <h1>Contact our Support and Sales team</h1>
+  <h2 class="font-weight-normal">Please, call us, send us an email or fill in the contact form.</h2>
+  <div class="mb-md-1">&nbsp;</div>
+    <div itemscope itemtype="http://schema.org/LocalBusiness">
+      <article>
+        <h2 class="page-desc-small-bottommargin" itemprop="name">Grocery Cloud</h2>
+        <address itemprop="address">
+            221b Baker St, Marylebone, 
+            London NW1 6XE
+        </address>
+        <p class="page-desc-small-bottommargin" itemprop="telephone">email: <a href="mailto: office@grocery.com">office@grocery.com</a></p>
+        <p><span itemprop="telephone">phone: <a href="tel:+44123456789">+44 123456789</a></span></p>
+      </article>
+    </div>
+  <div class="mb-md-1">&nbsp;</div>
+  <section>
+    <h2>Contact Form</h2>
+    <div *ngFor="let alert of alerts">
+        <alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
+            (onClosed)="onClosed(alert)">{{ alert.msg }}
+        </alert>
+    </div>
+    <form [formGroup]="contactForm">
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="fullname" class="col-md-2 col-sm-12 col-form-label">Full Name*</label> 
+          <div class="col-md-10 col-sm-12 form-control-block-mw">
+            <input formControlName="fullName" type="text" class="form-control" placeholder="Please enter your name (required)">
+            <span class="formcontrol-error float-right"
+                *ngIf="validateForm && !contactForm.get('fullName').value">Full name is required.
+            </span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-md-2 col-sm-12 col-form-label">Email*</label> 
+          <div class="col-md-10 col-sm-12 form-control-block-mw">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-envelope-o"></i>
+                </div>
+              </div> 
+              <input id="form-control-email" formControlName="email" type="email" class="form-control" placeholder="Please enter your email (required)">
+            </div>
+          </div>
+          <div class="offset-md-2 col-md-10 col-sm-12 form-control-block-mw">
+            <div class="float-right">
+              <span class="formcontrol-error"
+              *ngIf="(validateForm && !contactForm.get('email').value) || 
+                    (contactForm.get('email').value!='' && !contactForm.get('email').valid)">Email address is invalid.</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="subject" class="col-md-2 col-sm-12 col-form-label">Subject*</label> 
+          <div class="col-md-10 col-sm-12 form-control-block-mw">
+            <select formControlName="subject" id="subject" class="form-control">
+                <option>order</option>
+                <option>invoice</option>
+                <option>other</option>
+            </select>
+            <span class="formcontrol-error float-right"
+                *ngIf="validateForm && !contactForm.get('subject').value">Subject is required.
+            </span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="message" class="col-md-2 col-sm-12 col-form-label">Message*</label> 
+          <div class="col-md-10 col-sm-12 form-control-block-mw">
+            <textarea formControlName="message" class="form-control" cols="40" rows="5" 
+                  placeholder="Please enter your message (required)"></textarea>
+            <span class="formcontrol-error float-right"
+                *ngIf="validateForm && !contactForm.get('message').value">Message is required.
+            </span>
+          </div>
+        </div> 
+        <div class="form-group row">
+          <div class="offset-md-2 col-md-10 col-sm-12 form-control-block-mw">
+            <span class="float-right">
+              <button name="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</section>
+</div>
