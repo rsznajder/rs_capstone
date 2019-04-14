@@ -1,0 +1,15 @@
+ul {
+    /* list-style: none;  Remove default bullets */
+    cursor: pointer;
+}
+
+li { cursor: pointer; }
+  
+span:hover {
+  color: rgb(55, 55, 211);
+}
+
+.selected {
+    color: rgb(63, 63, 155);
+    font-weight: 500;
+}

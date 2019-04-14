@@ -1,0 +1,143 @@
+<div class="page-large-no-margin container">
+    <h1 id="cart-title">Your cart</h1>
+    <div id="product-row" class="d-flex align-content-center flex-row">
+        <div class="p-2 cart-item-width70">
+            <app-cartgrid></app-cartgrid>
+        </div>
+        <div id="cart-right-col" class="p-2 cart-item-width30 mx-auto">
+            <p id="cart-right-title" class="text-center"><b>Cart summary</b></p>
+            <div class="table-responsive-md">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Subtotal:</td>
+                            <td style="min-width: 50px"></td>
+                            <td class="text-right">{{_cartService.cartNetSum | currency:'USD':'symbol':'1.2-4'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping:</td>
+                            <td></td>
+                            <td class="text-right">{{_cartService.defaultShippingCost | currency:'USD':'symbol':'1.2-4'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tax:</td>
+                            <td></td>
+                            <td class="text-right">{{_cartService.cartGrossSum - _cartService.cartNetSum | currency:'USD':'symbol':'1.2-4'}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Total:</b></td>
+                            <td></td>
+                            <td class="text-right"><b>{{_cartService.cartGrossTotalSum | currency:'USD':'symbol':'1.2-4'}}</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 form-layout-width70">
+        <div *ngIf="(_cartService._productInCartList.length > 0)" class="container">   
+            <section>
+                <h2>Enter Shipping Details</h2>
+                <form [formGroup]="orderForm">
+                    <div *ngFor="let alert of alerts">
+                        <div *ngIf="alert.type==='success'">
+                            <alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
+                                (onClosed)="onClosed(alert)">
+                                Your order has been submitted.<br>
+                                Total cost:&nbsp;{{this._cartService.cartGrossTotalSum | currency:'USD':'symbol':'1.2-4'}}<br>
+                                Shipping cost::&nbsp;{{this._cartService.defaultShippingCost | currency:'USD':'symbol':'1.2-4'}}
+                            </alert>
+                        </div>
+                        <div *ngIf="alert.type!=='success'">
+                            <alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
+                                (onClosed)="onClosed(alert)">{{ alert.msg }}
+                            </alert>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <!-- first name -->
+                        <label for="firstName" class="col-lg-1 col-md-2 col-sm-12 col-form-label form-long-label">First Name*</label> 
+                        <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
+                            <input formControlName="firstName" type="text" class="form-control" placeholder="Please enter your first name (required)">
+                            <span class="formcontrol-error float-right"
+                                *ngIf="validateForm && !orderForm.get('firstName').value">First name is required.
+                            </span>
+                        </div>
+                        <!-- last name -->
+                        <label for="lastName" class="col-lg-1 col-md-2 col-sm-12 col-form-label form-long-label">Last Name*</label> 
+                        <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
+                            <input formControlName="lastName" type="text" class="form-control" placeholder="Please enter your last name (required)">
+                            <span class="formcontrol-error float-right"
+                                *ngIf="validateForm && !orderForm.get('lastName').value">Last name is required.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <!-- email -->    
+                        <label for="email" class="col-lg-1 col-md-2 col-sm-12 col-form-label font-09-rem">Email*</label> 
+                        <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
+                            <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                <i class="fa fa-envelope-o"></i>
+                                </div>
+                            </div> 
+                            <input id="form-control-email" formControlName="email" type="email" class="form-control" 
+                                        placeholder="Please enter your email (required)">
+                            </div>
+                            <span class="formcontrol-error float-right"
+                                *ngIf="(validateForm && !orderForm.get('email').value) || 
+                                        (orderForm.get('email').value!='' && !orderForm.get('email').valid)">Email address is invalid.
+                            </span>
+                        </div>
+                        <!-- phone -->
+                        <label for="phone" class="col-lg-1 col-md-2 col-sm-12 col-form-label font-09-rem">Phone*</label> 
+                        <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
+                            <input formControlName="phone" type="text" class="form-control" placeholder="Please enter your phone number (required)">
+                            <span class="formcontrol-error float-right"
+                                *ngIf="validateForm && !orderForm.get('phone').value">Phone is required.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <!-- address -->
+                        <label for="address" class="col-lg-1 col-md-2 col-sm-12 col-form-label font-09-rem">Address*</label> 
+                        <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
+                            <input formControlName="address" type="text" class="form-control" placeholder="Please enter your address (required)">
+                            <span class="formcontrol-error float-right"
+                                *ngIf="validateForm && !orderForm.get('address').value">Address is required.
+                            </span>
+                        </div>
+                        <!-- city -->
+                        <label for="city" class="col-lg-1 col-md-1 col-sm-12 col-form-label font-09-rem">City*</label> 
+                        <div class="col-lg-2 col-md-2 col-sm-12 form-control-block-05mw">
+                            <input formControlName="city" type="text" class="form-control" placeholder="(required)">
+                            <span class="formcontrol-error float-right"
+                                *ngIf="validateForm && !orderForm.get('city').value">City is required.
+                            </span>
+                        </div>
+                        <!-- zip -->
+                        <label for="zip" class="col-lg-1 col-md-1 col-sm-12 col-form-label font-09-rem">Zip*</label> 
+                        <div class="col-lg-2 col-md-2 col-sm-12 form-control-block-05mw">
+                            <input formControlName="zip" type="text" class="form-control" placeholder="(required)">
+                            <span class="formcontrol-error float-right"
+                                *ngIf="validateForm && !orderForm.get('zip').value">Zip code is required.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row clearfix"></div>
+                    <div class="form-group row">
+                        <label class="col-lg-1 col-md-2 d-none d-md-block col-form-label form-long-label">&nbsp;</label> 
+                        <div class="col-lg-5 col-md-4 d-none d-md-block form-control-block-mw"></div>
+                        <label class="col-lg-1 col-md-2 d-none d-md-block col-form-label form-long-label">&nbsp;</label> 
+                        <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
+                            <span class="float-right">
+                                <button name="submit" class="btn btn-primary" (click)="onSubmit()">Order now</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
