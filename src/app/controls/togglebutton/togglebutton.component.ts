@@ -40,17 +40,19 @@ export class TogglebuttonComponent implements OnInit, OnChanges {
     }
     // this came from ngOnChanges
     if (typeof event === 'boolean') {
-      this._state.checked = event;
-      if (this._state.checked === true) {
-        this.on(false);
-      } else {
-        this.off(false);
+      if (this._state.checked !== event) {
+        this._state.checked = event;
+        if (this._state.checked === true) {
+          this.on(false);
+        } else {
+          this.off(false);
+        }
       }
     } else {
       this._state.checked ? this.off(true) : this.on(true);
       this.setClassesAndStyles();
       this.checkboxChange.emit(this._state.checked);
-    }
+    } 
   }
 
   on(emitEvent: boolean) {

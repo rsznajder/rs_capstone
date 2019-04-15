@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   validateForm = false;
   alerts: any[] = [];
 
-  constructor(fb: FormBuilder, protected _cartService: CartService) { 
+  constructor(fb: FormBuilder, public _cartService: CartService) {
     this.orderForm = fb.group({
       firstName: ['', [Validators.required, Validators.maxLength(50)]],
       lastName: ['', [Validators.required, Validators.maxLength(50)]],

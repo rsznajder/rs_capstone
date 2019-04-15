@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './route-reuse-strategy';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -57,7 +59,9 @@ import { TreeviewComponent } from './controls/treeview/treeview.component';
     DigitOnlyModule,
     CarouselModule.forRoot()
   ],
-  providers: [HttpClient, Globals, ProductService, CartService],
+  providers: [HttpClient, Globals, ProductService, CartService,
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

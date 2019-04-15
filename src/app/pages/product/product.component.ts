@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductService } from '../../services/product/product.service';
 import { CartService } from '../../services/cart/cart.service';
+import { Product } from '../../rest/dto/product';
 import { CartProduct } from '../../rest/dto/cartproduct';
 import { FindProductResponse } from '../../services/product/findproduct.response';
 import { FindProductResponseTypes } from '../../services/product/findproduct-responsetypes.enum';
@@ -24,8 +25,17 @@ export class ProductComponent implements OnInit {
     private _productService: ProductService,
     private _cartService: CartService
   ) {
+    const localThis = this;
     _router.events.subscribe(val => {
-      this.locationChanged(val);
+      localThis.locationChanged(val);
+    });
+    _productService.productListChanged$.asObservable().subscribe((value) => {
+      // debugger;
+      if (value.message === 'new data') {
+        localThis.selectedProductResponse = localThis._productService.findProductByName(localThis.selectedProductName);
+        localThis.selectedProductResponse.product.quantityInCart =
+            localThis._cartService.getQuantityInCartByName(localThis.selectedProductName);
+      }
     });
   }
 
@@ -102,7 +112,18 @@ export class ProductComponent implements OnInit {
       netSum: 0,
       imagelink: this.selectedProductResponse.product.imagelink
     });
-    this._cartService.addProduct(cartProduct);
+    if (this._cartService.addProduct(cartProduct)) {
+      this.selectedProductResponse.product.addToCartMessage = 'success';
+      this.selectedProductResponse.product.quantityInCart = 
+          this._cartService.getQuantityInCartByName(this.selectedProductResponse.product.name);
+      setTimeout(this.showQuantityInCart, 3000, this.selectedProductResponse.product);
+    } else {
+      this.selectedProductResponse.product.addToCartMessage = 'error';
+    }
+  }
+
+  showQuantityInCart(product: Product) {
+    product.addToCartMessage = '';
   }
 
   goBack(): void {
