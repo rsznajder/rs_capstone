@@ -9,12 +9,14 @@
             </div>
         </div>
         <div id="shopping-products" class="d-flex flex-column align-items-start flex-nowrap">
+          
             <div id="shopping-products-header">
                 <div id="shopping-products-header-div">
                   <div id="shopping-products-header-div-span">
                     <div *ngIf="selectedCategory && selectedSubcategory">
-                      <span class="float-left">{{selectedCategory}} / {{selectedSubcategory}}</span>
-                      <span class="float-left pr-4">Items: {{numberOfItemsFiltered}} out of {{numberOfItemsInCategory}}</span>
+                      <span id="shopping-products-header-category" class="float-left pr-4">{{selectedCategory}} / {{selectedSubcategory}}</span>
+                      <span class="d-none d-sm-inline float-left pr-4">Items: {{numberOfItemsFiltered}} out of {{numberOfItemsInCategory}}</span>
+                      <span class="d-inline d-sm-none font-08-rem float-right">{{numberOfItemsFiltered}} / {{numberOfItemsInCategory}}</span>
                     </div>
                     <div *ngIf="!(selectedCategory && selectedSubcategory)">
                         <span>&nbsp;</span>
@@ -22,11 +24,12 @@
                   <div class="clearfix"></div>
                   </div>
                   <div class="float-left">
-                    <span class="pr-2">In stock only</span>
+                    <span class="d-none d-sm-inline pr-2">In stock only</span>
+                    <span class="d-inline d-sm-none pr-2">Stock</span>
                     <app-togglebutton [checked]="selectedInStockOnly" (checkboxChange)="inStockChange($event)"></app-togglebutton>
                   </div>
                   <div class="d-inline-flex flex-row align-items-baseline flex-nowrap float-right">
-                    <span class="p-2">Sort</span>
+                    <span class="d-none d-sm-inline p-2">Sort</span>
                     <select [(ngModel)]="selectedSortBy" class="form-control" (change)="sortByChange($event)">
                         <option>None</option>
                         <option>Price</option>
@@ -34,8 +37,11 @@
                         <option>Rating</option>
                     </select>
                   </div>
-                </div>
-            </div>
+                  <div class="clearfix"></div>
+                <div id="shopping-products-header-bottom">&nbsp;</div>
+                </div>               
+            </div>  
+                 
             <div id="shopping-products-list" class="d-flex flex-row flex-wrap">
                 <div *ngFor="let product of filteredProductList; let i = index">
                     <div class="shopping-product">

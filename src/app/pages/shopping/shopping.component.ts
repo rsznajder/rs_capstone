@@ -28,7 +28,7 @@ export class ShoppingComponent implements OnInit {
         localThis.menuList = <MenuItem[]>_productService.menuCategoryList.map(obj => ({...obj}));
       }
     });
-   }
+  }
 
   filterProductList() {
     if (!this.selectedCategory) {
@@ -178,57 +178,5 @@ export class ShoppingComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* const product1 = new Product({
-      name: 'Baby Monitor',
-      description: 'Baby monitor while baby is sleeping away from mom or dad. Baby monitor while baby is sleeping away from mom or dad',
-      price: 30,
-      imagelink: 'https://webmppcapstone.blob.core.windows.net/babycare-royaltyfree/babymonitor.png',
-      rating: 5,
-      stock: 40,
-      category: 'Household and Beauty',
-      subcategory: 'Baby care'
-    });
-    const product2 = new Product({
-      name: 'Baby Girl Dress',
-      description: 'Baby Girl Dress with beautiful colors',
-      price: 13,
-      imagelink: 'https://webmppcapstone.blob.core.windows.net/babycare-royaltyfree/babydress.png',
-      rating: 5,
-      stock: 55,
-      category: 'Household and Beauty',
-      subcategory: 'Baby care'
-    });
-    const product3 = new Product({
-      name: 'Baby Bottle',
-      description: 'Baby bottle with 10 oz capacity',
-      price: 8,
-      imagelink: 'https://webmppcapstone.blob.core.windows.net/babycare-royaltyfree/babyBottle.png',
-      rating: 5,
-      stock: 55,
-      category: 'Household and Beauty',
-      subcategory: 'Baby care'
-    });
-    const product4 = new Product({
-      name: 'Blanket',
-      description: 'Baby blanket helps keep the baby warm',
-      price: 20,
-      imagelink: 'https://webmppcapstone.blob.core.windows.net/babycare-royaltyfree/babyblanket.png',
-      rating: 5,
-      stock: 15,
-      category: 'Household and Beauty',
-      subcategory: 'Baby care'
-    });
-    const product5 = new Product({
-      name: 'Bib',
-      description: 'Baby Bib helps with keeps baby cloth clean during meal time',
-      price: 10,
-      imagelink: 'https://webmppcapstone.blob.core.windows.net/babycare-royaltyfree/babybib.png',
-      rating: 4,
-      stock: 30,
-      category: 'Household and Beauty',
-      subcategory: 'Baby care'
-    });
-    this.filteredProductList.push(product1, product2, product3, product4, product5);
-    this.checkQuantityInCart(); */
   }
 }

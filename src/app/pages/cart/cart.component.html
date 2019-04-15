@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="p-2 form-layout-width70">
-        <div *ngIf="(_cartService._productInCartList.length > 0)" class="container">   
+        <div *ngIf="(_cartService.productInCartList.length > 0)" class="container">   
             <section>
                 <h2>Enter Shipping Details</h2>
                 <form [formGroup]="orderForm">

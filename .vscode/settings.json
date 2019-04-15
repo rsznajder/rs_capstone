@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/16260ab5-bba0-4a6e-9b2f-2bc43ba2c6ff/resourceGroups/AngularCLIWebAppTest032019/providers/Microsoft.Web/sites/MPPCapstone",
+    "appService.deploySubpath": "dist\\rs-capstone"
+}
