@@ -30,10 +30,12 @@
             <div class="slide-div">
               <div *ngFor="let product of slide.products">
                 <nav>
-                  <!-- rubric09 -->
-                  <a [routerLink]="['/product']" [queryParams]="{ name: product.name }"> 
-                    <img src="{{product.url}}" alt="first slide" class="img-fluid home-img">
-                  </a>
+                  <!-- rubric09, rubric11 -->
+                  <div class="home-img-div">
+                    <a [routerLink]="['/product']" [queryParams]="{ name: product.name }"> 
+                      <img src="{{product.url}}" alt="first slide" class="img-fluid home-img animated fadeIn">
+                    </a>
+                  </div>
                 </nav>
               </div>
             </div>

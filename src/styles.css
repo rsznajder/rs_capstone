@@ -327,8 +327,10 @@ footer > nav > div > a {
   max-height:600px;
 }
 
-.home-img {
-  display: block;
+.home-img-div {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   max-width: 300px;
   max-height: 60vh;
   border: solid 1px #e0e0e0;
@@ -337,11 +339,47 @@ footer > nav > div > a {
 }
 
 @media (min-height: 900px) {
+  .home-img-div {
+    max-height: 540px;
+    margin-bottom: 50px;
+  }
+}
+
+.home-img {
+  max-width: 300px;
+  max-height: 60vh;
+}
+
+@media (min-height: 900px) {
   .home-img {
     max-height: 540px;
     margin-bottom: 50px;
   }
 }
+
+/* rubric11 [begin] */
+.animated {
+  -webkit-animation-duration: 5s;
+  animation-duration: 5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+/* rubric11 [end] */
 
 .slide-div {
   display: flex;
