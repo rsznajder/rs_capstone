@@ -1,6 +1,7 @@
 <div class="page-large-no-margin container">
     <h1 id="cart-title">Shop All</h1>
     <div id="shopping-container" class="d-flex flex-row flex-wrap">
+        <!-- rubric19 [begin] -->
         <div id="shopping-menu" class="d-flex flex-column align-items-start flex-nowrap">
             <div id="shopping-menu-div">
               <div id="shopping-menu-div-div">
@@ -11,11 +12,14 @@
               </div>
             </div>
         </div>
-        <div id="shopping-products" class="d-flex flex-column align-items-start flex-nowrap">      
+        <!-- rubric19 [end] -->
+        <div id="shopping-products" class="d-flex flex-column align-items-start flex-nowrap">  
+            <!-- rubric14 [begin] -->    
             <div id="shopping-products-header">
-              <section>
+              <section class="w-100">
                 <h2 class="d-none">Controls for filtering and sorting products</h2>
                 <div id="shopping-products-header-div">
+                  <!-- rubric15, rubric16 [begin] --> 
                   <div id="shopping-products-header-div-span">
                     <div *ngIf="selectedCategory && selectedSubcategory">
                       <span id="shopping-products-header-category" class="float-left w-auto mr-4">{{selectedCategory}} / {{selectedSubcategory}}</span>
@@ -27,11 +31,15 @@
                     </div>
                   <div class="clearfix"></div>
                   </div>
+                  <!-- rubric15, rubric16 [end] --> 
+                  <!-- rubric17 [begin] -->
                   <div class="float-left">
                     <span class="d-none d-sm-inline pr-2">In stock only</span>
                     <span class="d-inline d-sm-none pr-2">Stock</span>
                     <app-togglebutton [checked]="selectedInStockOnly" (checkboxChange)="inStockChange($event)"></app-togglebutton>
                   </div>
+                  <!-- rubric17 [end] -->
+                  <!-- rubric18 [begin] -->
                   <div class="d-inline-flex flex-row align-items-baseline flex-nowrap float-right">
                     <span class="d-none d-sm-inline p-2">Sort</span>
                     <select [(ngModel)]="selectedSortBy" class="form-control" (change)="sortByChange($event)">
@@ -41,25 +49,31 @@
                         <option>Rating</option>
                     </select>
                   </div>
+                  <!-- rubric18 [end] -->
                   <div class="clearfix"></div>
                 <div id="shopping-products-header-bottom">&nbsp;</div>
                 </div> 
               </section>              
             </div>  
+            <!-- rubric14 [end] -->    
             <section>
               <h2 class="d-none">Products list filtered by category</h2>
+            <!-- rubric20 [begin] -->
             <div id="shopping-products-list" class="d-flex flex-row flex-wrap">
                 <div *ngFor="let product of filteredProductList; let i = index">
                   <article>
                     <h2 class="d-none">Product</h2>
                     <div class="shopping-product" itemscope itemtype="http://schema.org/Product">
                         <div id="shopping-product-div">
+                            <!-- rubric31 -->
                             <a [routerLink]="['/product']" [queryParams]="{ name:product.name }" itemprop="image">
+                                <!-- rubric23 -->
                                 <img id="shopping-product-div-img" [src]="product.imagelink" [alt]="product.name">
                             </a>
                         </div>
                         <div id="shopping-product-desc">
                             <h2 class="mb-0">
+                                <!-- rubric21, rubric32 -->
                                 <a [routerLink]="['/product']" [queryParams]="{ name:product.name }" class="mb-0" itemprop="identifier">
                                     {{ product.name | titlecase }}
                                 </a>
@@ -93,6 +107,7 @@
                                       <p class="page-desc text-danger float-left mb-1">Product not added to cart!</p>
                                     </div>
                                     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                      <!-- rubric22 -->
                                       <p class="font-weight-bold page-desc float-right mb-1">Price: {{product.price | currency:'USD':'symbol':'1.2-4'}}</p>
                                       <meta itemprop="price" content="{{product.price}}" />
                                       <meta itemprop="priceCurrency" content="USD" />
@@ -102,6 +117,7 @@
                                     <div id="product-counter-group">
                                         <app-counterinput [(counter)]="product.addToCartQuantity"></app-counterinput>
                                     </div>
+                                    <!-- rubric24 -->
                                     <button id="product-addtocart" type="button" class="btn btn-warning" 
                                         (click)="addToCart(product.name, product.addToCartQuantity)">Add to cart</button>
                                 </div>
@@ -111,6 +127,7 @@
                   </article>
                 </div>
             </div>
+            <!-- rubric20 [end] -->
           </section>
         </div>
     </div>

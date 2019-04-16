@@ -12,6 +12,7 @@ const routes: Routes = [
   /* rubric13 */
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  /* rubric34 */
   { path: 'shopping', component: ShoppingComponent },
   { path: 'cart', component: CartComponent },
   { path: 'product', component: ProductComponent },

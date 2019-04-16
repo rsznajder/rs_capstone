@@ -449,6 +449,7 @@ footer > nav > div > a {
   margin-right: 20px;
 }
 
+/* rubric24 */
 #product-addtocart {
   max-width: 120px;
 }
@@ -618,20 +619,6 @@ footer > nav > div > a {
   }
 }
 
-#shopping-products-header-category {
-  font-size: 0.8rem;
-  width: 80%;
-  padding-right: 0!important;
-}
-
-@media (min-width: 576px) {
-  #shopping-products-header-category {
-    font-size: 1rem;
-    width: 100%;
-    padding-right: initial;
-  }
-}
-
 #shopping-menu-div-div {
   width: 290px;
   margin-left: auto;
@@ -666,14 +653,31 @@ footer > nav > div > a {
   margin-bottom: 30px;
 }
 
+/* rubric15, rubric16 [begin] */
 #shopping-products-header-div-span {
   margin-bottom: 2px;
 }
+
+#shopping-products-header-category {
+  font-size: 0.8rem;
+  width: 80%;
+  padding-right: 0!important;
+}
+
+@media (min-width: 576px) {
+  #shopping-products-header-category {
+    font-size: 1rem;
+    width: 100%;
+    padding-right: initial;
+  }
+}
+/* rubric15, rubric16 [end] */
 
 #shopping-products-header-bottom {
   height: 8px;
 }
 
+/* rubric20 [begin] */
 #shopping-products-list {
   width: 100%;
   max-height: 50vh;
@@ -768,6 +772,7 @@ footer > nav > div > a {
     max-height: 80vh;
   }
 }
+/* rubric20 [end] */
 
 .shopping-product {
   width:300px;
@@ -791,6 +796,7 @@ footer > nav > div > a {
   height: 175px;
 }
 
+/* rubric23 */
 #shopping-product-div-img {
   max-width:280px;
   height:175px;

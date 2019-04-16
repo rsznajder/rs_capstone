@@ -1,9 +1,9 @@
 <div class="page-large-no-margin container">
     <section>
     <h1 id="cart-title">Your cart</h1>
+    <section class="w-100">
+    <h2 class="d-none">Products list in the cart</h2>        
     <div id="product-row" class="d-flex align-content-center flex-row">
-        <section>
-        <h2 class="d-none">Products list in the cart</h2>
         <div class="p-2 cart-item-width70">
             <app-cartgrid></app-cartgrid>
         </div>
@@ -36,11 +36,11 @@
                 </table>
             </div>
         </div>
-    </section>
     </div>
+    </section>
     <div class="p-2 form-layout-width70">
         <div *ngIf="(_cartService.productInCartList.length > 0)" class="container">   
-            <section>
+            <section class="w-100">
                 <h2>Enter Shipping Details</h2>
                 <form [formGroup]="orderForm">
                     <div *ngFor="let alert of alerts">
