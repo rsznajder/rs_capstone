@@ -10,6 +10,7 @@
             221b Baker St, Marylebone, 
             London NW1 6XE
         </address>
+        <!-- rubric58 -->
         <p class="page-desc-small-bottommargin" itemprop="email">email: <a href="mailto: office@grocery.com">office@grocery.com</a></p>
         <p><span itemprop="telephone">phone: <a href="tel:+44123456789">+44 123456789</a></span></p>
       </article>
@@ -18,9 +19,7 @@
   <section>
     <h2>Contact Form</h2>
     <div *ngFor="let alert of alerts">
-        <!--<alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
-            (onClosed)="onClosed(alert)">{{ alert.msg }}
-        </alert>-->
+        <!-- rubric60 -->
         <div *ngIf="alert.type==='success'">
             <alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
                 (onClosed)="onClosed(alert)">
@@ -29,12 +28,14 @@
                 Subject:&nbsp; {{this.contactForm.get('subject').value}}
             </alert>
         </div>
+        <!-- rubric61 -->
         <div *ngIf="alert.type!=='success'">
             <alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
                 (onClosed)="onClosed(alert)">{{ alert.msg }}
             </alert>
         </div>
     </div>
+    <!-- rubric57 [begin] -->
     <form [formGroup]="contactForm">
       <div class="form-group">
         <div class="form-group row">
@@ -92,12 +93,14 @@
         <div class="form-group row">
           <div class="offset-md-2 col-md-10 col-sm-12 form-control-block-mw">
             <span class="float-right">
+              <!-- rubric59 -->
               <button name="submit" class="btn btn-primary" (click)="onSubmit()">Send</button>
             </span>
           </div>
         </div>
       </div>
     </form>
+    <!-- rubric57 [end] -->
   </section>
 </section>
 </div>
