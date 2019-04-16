@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     if (this.selectedNoSlideShow === true) {
       this.carouselInterval = false;
     } else {
-      this.carouselInterval = 2000;
+      this.carouselInterval = 3000;
     }
   }
 

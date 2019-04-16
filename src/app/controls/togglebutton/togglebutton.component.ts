@@ -26,19 +26,31 @@ export class TogglebuttonComponent implements OnInit, OnChanges {
   public labelOffClasses: string;
   public spanClasses: string;
 
-  constructor() { }
+  constructor() {
+    if (!this._state) {
+      this.initState();
+    }
+   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.checked) {
-      this.toggle(changes.checked.currentValue);
+      if (changes.checked.isFirstChange() === true) {
+        if (this._state.checked !== changes.checked.currentValue) {
+          this._state.checked = changes.checked.currentValue;
+          if (this._state.checked === true) {
+            this.on(false);
+          } else {
+            this.off(false);
+          }
+        }
+      } else {
+        this.toggle(changes.checked.currentValue);
+      }
    }
   }
 
   toggle(event: MouseEvent | boolean) {
     console.log('toggle: ' + typeof event);
-    if (!this._state) {
-      this.initState();
-    }
     // this came from ngOnChanges
     if (typeof event === 'boolean') {
       if (this._state.checked !== event) {
