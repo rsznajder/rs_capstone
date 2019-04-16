@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent },
   /* rubric62 */
   { path: 'contact', component: ContactComponent },
+  /* rubric64 */
   { path: 'about', component: AboutComponent }
 ];
 
