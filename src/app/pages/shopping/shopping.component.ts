@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { CartService } from '../../services/cart/cart.service';
 import { ProductService } from '../../services/product/product.service';
 import { Product } from '../../rest/dto/product';
@@ -21,7 +22,8 @@ export class ShoppingComponent implements OnInit {
   numberOfItemsInCategory = 0;
   numberOfItemsFiltered = 0;
 
-  constructor(private _productService: ProductService, private _cartService: CartService) {
+  constructor(private _deviceService: DeviceDetectorService, private _productService: ProductService,
+              private _cartService: CartService) {
     const localThis = this;
     _productService.menuCategoryListChanged$.asObservable().subscribe((value) => {
       if (value.message === 'new data') {

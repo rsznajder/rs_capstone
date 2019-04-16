@@ -3,25 +3,31 @@
     <h1 class="pl-2">Welcome to Grocery Cloud</h1>
   </div>
   <div class="row ml-2 mr-2 mb-2">
-    <p class="page-desc pl-2">We have been on the market for 25 years.</p>
+    <p class="page-desc pl-2">We have been on the market for 25 years. 
+      In our offer we have <b>high quality products at attractive prices</b>.</p>
     <span class="d-flex flex-wrap flex-sm-nowrap align-items-center ml-auto pr-2">
         <span class="mr-2">Toggle slide show</span>
         <app-togglebutton class="mr-2" [checked]="!selectedNoSlideShow" (checkboxChange)="toggleSlideShow($event)"></app-togglebutton>
-        <nav class="float-right">
-          <button [routerLink]="['/shopping']" class="btn btn-primary mr-2" type="button">Shop All</button>
-        </nav>
+        <div class="float-right">
+          <nav>
+            <button [routerLink]="['/shopping']" class="btn btn-primary mr-2" type="button">Shop All</button>
+          </nav>
+        </div>
     </span>
   </div>
   <section>
+    <h2 class="d-none">Featured products</h2>
     <div class="carousel-div">
       <carousel [activeSlide]="activeSlide" [interval]="carouselInterval" [noWrap]="selectedNoSlideShow" [noPause]="true" class="carousel">
         <div *ngIf="slideList.length > 0">
           <slide *ngFor="let slide of slideList">
             <div class="slide-div">
               <div *ngFor="let product of slide.products">
-                <a [routerLink]="['/product']" [queryParams]="{ name: product.name }"> <!--[queryParams]={ name:product.name }--> 
-                  <img src="{{product.url}}" alt="first slide" class="img-fluid home-img">
-                </a>
+                <nav>
+                  <a [routerLink]="['/product']" [queryParams]="{ name: product.name }"> 
+                    <img src="{{product.url}}" alt="first slide" class="img-fluid home-img">
+                  </a>
+                </nav>
               </div>
             </div>
           </slide>

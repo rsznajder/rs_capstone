@@ -1,5 +1,6 @@
 <div class="page-large container">
     <div *ngIf="getResponseType() === 1">
+        <article>
         <div id="product-row" class="d-flex align-content-center flex-row" itemscope itemtype="http://schema.org/Product">
             <div id="product-div-img" class="p-2 item-width50">
                 <div id="product-div-div-img" class="float-right" itemprop="image">
@@ -11,7 +12,7 @@
                 <p class="font-weight-bold page-title" itemprop="name">{{selectedProductResponse.product.name}}</p>
                 <div itemscope itemtype="http://schema.org/Rating">
                     <p class="page-desc">Rating: {{selectedProductResponse.product.rating}} / 5</p>
-                    <meta itemprop="priceCurrency" content="USD" />
+                    <meta itemprop="ratingValue" content="{{selectedProductResponse.product.rating}}" />
                 </div>
                 <p class="page-desc" itemprop="description">{{selectedProductResponse.product.description}}</p>
                 <div class="page-medium-bottommargin">&nbsp;</div>
@@ -62,6 +63,7 @@
                 <button class="btn btn-primary" (click)="goBack()">Go back</button>
             </div>
         </div>
+    </article>
     </div>
     <div *ngIf="getResponseType() === 2">
         <p class="font-weight-bold page-title">We are sorry,</p>

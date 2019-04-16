@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { CartService } from '../../services/cart/cart.service';
 import { CartProduct } from '../../rest/dto/cartproduct';
@@ -14,8 +15,14 @@ export class CartComponent implements OnInit {
   orderForm: FormGroup;
   validateForm = false;
   alerts: any[] = [];
+  isIntExplorerBrowser = false;
 
-  constructor(fb: FormBuilder, public _cartService: CartService) {
+  constructor(fb: FormBuilder, private _deviceService: DeviceDetectorService, public _cartService: CartService) {
+    const browser = this._deviceService.browser;
+    if (browser === 'IE') {
+      this.isIntExplorerBrowser = true;
+    }
+    // console.log(browser);
     this.orderForm = fb.group({
       firstName: ['', [Validators.required, Validators.maxLength(50)]],
       lastName: ['', [Validators.required, Validators.maxLength(50)]],
@@ -43,7 +50,7 @@ export class CartComponent implements OnInit {
   showErrorAlert(): void {
     this.alerts.push({
       type: 'warning',
-      msg: 'Please, correct data in Enter Shipping Details Form',
+      msg: 'Please, correct data in Shipping Details Form',
       timeout: 3000
     });
   }
@@ -57,10 +64,10 @@ export class CartComponent implements OnInit {
 
     this.alerts.push({
       type: 'success',
-      msg: 'Your order has been submitted.<br>' + 'Total cost:' + formatter.format(this._cartService.cartGrossTotalSum) +
-            '   Shipping cost: ' + formatter.format(this._cartService.defaultShippingCost),
       timeout: 3000
     });
+    /* msg: 'Your order has been submitted.<br>' + 'Total cost:' + formatter.format(this._cartService.cartGrossTotalSum) +
+            '   Shipping cost: ' + formatter.format(this._cartService.defaultShippingCost), */
   }
  
   onClosed(dismissedAlert: AlertComponent): void {

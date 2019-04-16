@@ -1,6 +1,9 @@
 <div class="page-large-no-margin container">
+    <section>
     <h1 id="cart-title">Your cart</h1>
     <div id="product-row" class="d-flex align-content-center flex-row">
+        <section>
+        <h2 class="d-none">Products list in the cart</h2>
         <div class="p-2 cart-item-width70">
             <app-cartgrid></app-cartgrid>
         </div>
@@ -33,6 +36,7 @@
                 </table>
             </div>
         </div>
+    </section>
     </div>
     <div class="p-2 form-layout-width70">
         <div *ngIf="(_cartService.productInCartList.length > 0)" class="container">   
@@ -54,7 +58,7 @@
                             </alert>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row row-ie">
                         <!-- first name -->
                         <label for="firstName" class="col-lg-1 col-md-2 col-sm-12 col-form-label form-long-label">First Name*</label> 
                         <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
@@ -72,7 +76,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row row-ie">
                         <!-- email -->    
                         <label for="email" class="col-lg-1 col-md-2 col-sm-12 col-form-label font-09-rem">Email*</label> 
                         <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
@@ -99,7 +103,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row row-ie">
                         <!-- address -->
                         <label for="address" class="col-lg-1 col-md-2 col-sm-12 col-form-label font-09-rem">Address*</label> 
                         <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
@@ -131,7 +135,7 @@
                         <div class="col-lg-5 col-md-4 d-none d-md-block form-control-block-mw"></div>
                         <label class="col-lg-1 col-md-2 d-none d-md-block col-form-label form-long-label">&nbsp;</label> 
                         <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
-                            <span class="float-right">
+                            <span [ngClass]="{'float-left': isIntExplorerBrowser, 'float-right': !isIntExplorerBrowser}">
                                 <button name="submit" class="btn btn-primary" (click)="onSubmit()">Order now</button>
                             </span>
                         </div>
@@ -140,4 +144,5 @@
             </section>
         </div>
     </div>
+</section>
 </div>
