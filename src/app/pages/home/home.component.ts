@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private _globals: Globals) { }
 
+  /* rubric10 */
   toggleSlideShow(event: boolean) {
     this.selectedNoSlideShow = !event;
     if (this.selectedNoSlideShow === true) {
@@ -48,6 +49,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /* rubric01, rubric02, rubric03 */
+  /* carousel displays different number of products depending on the size of the viewport */
   setSlideList(mode: number) {
     if (this.mode === mode) {
       return;
