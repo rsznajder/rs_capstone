@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   /* rubric46 */
   { path: 'product', component: ProductComponent },
+  /* rubric62 */
   { path: 'contact', component: ContactComponent },
   { path: 'about', component: AboutComponent }
 ];

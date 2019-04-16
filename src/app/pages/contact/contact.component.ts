@@ -34,6 +34,7 @@ export class ContactComponent {
     this.showSuccessInfo();
   }
 
+  /* rubric61 */
   showErrorAlert(): void {
     this.alerts.push({
       type: 'warning',
@@ -42,6 +43,7 @@ export class ContactComponent {
     });
   }
 
+  /* rubric60 */
   showSuccessInfo(): void {
     this.alerts.push({
       type: 'success',
