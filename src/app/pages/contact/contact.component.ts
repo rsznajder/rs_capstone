@@ -45,7 +45,8 @@ export class ContactComponent {
   showSuccessInfo(): void {
     this.alerts.push({
       type: 'success',
-      msg: 'Your message has been sent',
+      msg: 'Your message has been sent.<br>Your email address: ' + this.contactForm.get('email').value + 
+            'Subject: ' + this.contactForm.get('subject').value,
       timeout: 3000
     });
   }

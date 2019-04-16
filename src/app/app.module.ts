@@ -10,6 +10,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DigitOnlyModule } from '@uiowa/digit-only';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 import { Globals } from './_globals/globals';
 import { ProductService } from './services/product/product.service';
@@ -57,7 +58,8 @@ import { TreeviewComponent } from './controls/treeview/treeview.component';
     AlertModule.forRoot(),
     CollapseModule.forRoot(),
     DigitOnlyModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    DeviceDetectorModule.forRoot()
   ],
   providers: [HttpClient, Globals, ProductService, CartService,
     { provide: RouteReuseStrategy, useClass: CustomReuseStrategy  }
