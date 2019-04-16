@@ -40,12 +40,8 @@ export class ProductComponent implements OnInit {
   }
 
   locationChanged(val: Event) {
-    if (
-      val instanceof NavigationEnd &&
-      this._location.path() !== '' &&
-      val.url.substr(0, 8) === '/product' &&
-      this._route.snapshot.queryParams.name
-    ) {
+    if (val instanceof NavigationEnd && this._location.path() !== '' && val.url.substr(0, 8) === '/product' &&
+      this._route.snapshot.queryParams.name) {
       console.log('activated route: ' + this._route.snapshot.queryParams.name);
       this.selectedProductName = this._route.snapshot.queryParams.name;
       this.selectedProductResponse = this._productService.findProductByName(this.selectedProductName);
@@ -100,6 +96,7 @@ export class ProductComponent implements OnInit {
     return !this.isDataValid();
   }
 
+  /* rubric44 */
   addToCart() {
     if (this.isDataValid() === false) {
       return;
@@ -126,6 +123,7 @@ export class ProductComponent implements OnInit {
     product.addToCartMessage = '';
   }
 
+  /* rubric45 */
   goBack(): void {
     this._location.back();
   }

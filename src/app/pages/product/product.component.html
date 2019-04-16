@@ -4,24 +4,30 @@
         <div id="product-row" class="d-flex align-content-center flex-row" itemscope itemtype="http://schema.org/Product">
             <div id="product-div-img" class="p-2 item-width50">
                 <div id="product-div-div-img" class="float-right" itemprop="image">
+                    <!-- rubric36 -->
                     <img id="product-img" src="{{selectedProductResponse.product.imagelink}}" class="img-fluid" alt="Product image">
                 </div>
             </div>
             <div class="p-2 item-width50">
                 <div class="page-medium-bottommargin">&nbsp;</div>
+                <!-- rubric35 -->
                 <p class="font-weight-bold page-title" itemprop="name">{{selectedProductResponse.product.name}}</p>
                 <div itemscope itemtype="http://schema.org/Rating">
+                    <!-- rubric37 -->
                     <p class="page-desc">Rating: {{selectedProductResponse.product.rating}} / 5</p>
                     <meta itemprop="ratingValue" content="{{selectedProductResponse.product.rating}}" />
                 </div>
+                <!-- rubric40 -->
                 <p class="page-desc" itemprop="description">{{selectedProductResponse.product.description}}</p>
                 <div class="page-medium-bottommargin">&nbsp;</div>
                 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <!-- rubric39 -->
                     <p class="font-weight-bold page-title" itemprop="price">Price: {{selectedProductResponse.product.price | currency:'USD':'symbol':'1.2-4'}}</p>
                     <meta itemprop="price" content="{{selectedProductResponse.product.price}}" />
                     <meta itemprop="priceCurrency" content="USD" />
                 </div>
                 <div href="https://schema.org/ItemAvailability">
+                    <!-- rubric38 -->
                     <p class="page-desc">Stock: {{selectedProductResponse.product.stock | number:'1.0-2'}}</p>
                     <div *ngIf="selectedProductResponse.product.stock > 0">
                         <meta itemprop="availability" content="InStock" />
@@ -48,10 +54,12 @@
                         </div>
                     </div>
                     <div class="d-flex flex-row align-items-center">
+                        <!-- rubric42 -->
                         <span id="product-qty">Qty</span>
                         <div id="product-counter-group">
                             <app-counterinput [(counter)]="productQuantity" (counterChange)="onCounterChange($event)"></app-counterinput>
                         </div>
+                        <!-- rubric41, rubric44 addToCart() -->
                         <button id="product-addtocart" type="button" class="btn btn-warning" (click)="addToCart()" 
                                 [disabled]="isAddToCartDisabled()">Add to cart</button>
                     </div> 
@@ -60,7 +68,8 @@
         </div>
         <div class="d-flex justify-content-start justify-content-sm-end">
             <div class="float-right">
-                <button class="btn btn-primary" (click)="goBack()">Go back</button>
+                <!-- rubric43, rubric45 goBack() -->
+                <button class="btn btn-primary" (click)="goBack()">Back</button>
             </div>
         </div>
     </article>

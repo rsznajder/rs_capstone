@@ -398,6 +398,7 @@ footer > nav > div > a {
   }
 }
 
+/* rubric36 [begin] */
 #product-div-img {
   margin-right: 0px;
 }
@@ -436,8 +437,8 @@ footer > nav > div > a {
   #product-img {
     max-height: 500px;
   }
-  
 }
+/* rubric36 [end] */
 
 #product-qty {
   margin-right: 20px;
