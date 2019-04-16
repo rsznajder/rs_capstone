@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, SimpleChanges, OnInit, OnChanges } from '@angular/core';
 
+/* rubric06, rubric17 */
 @Component({
   selector: 'app-togglebutton',
   templateUrl: './togglebutton.component.html',

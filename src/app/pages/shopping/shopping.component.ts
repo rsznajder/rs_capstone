@@ -32,6 +32,7 @@ export class ShoppingComponent implements OnInit {
     });
   }
 
+  /* rubric15, rubric16, rubric17, rubric18 */
   filterProductList() {
     if (!this.selectedCategory) {
       return;
@@ -48,8 +49,10 @@ export class ShoppingComponent implements OnInit {
     this.filteredProductList = this._productService.productList.filter(p => {
       // console.log(p.category + '   ' + p.subcategory);
       if (p.category.toLowerCase() === selectedCategory.toLowerCase()) {
+        /* rubric28 */
         numberOfItemsInCategory = numberOfItemsInCategory + 1;
         if (p.subcategory.toLowerCase() === selectedSubcategory.toLowerCase()) {
+          /* rubric29 */
           if (selectedInStockOnly === true) {
             if (p.stock > 0) {
               numberOfItemsFiltered = numberOfItemsFiltered + 1;
@@ -94,12 +97,13 @@ export class ShoppingComponent implements OnInit {
     this.numberOfItemsFiltered = numberOfItemsFiltered;
   }
 
-
+  /* rubric15 */
   treeviewChange(event: MenuItem) {
     console.log(event);
     if (event instanceof MenuSubcategory) {
       const subcategory: MenuSubcategory = <MenuSubcategory>event;
       for (const menu of this.menuList) {
+        /* rubric27 */
         if (menu.subcategories.find(x => x.name === subcategory.name)) {
           this.selectedCategory = menu.name;
           this.selectedSubcategory = subcategory.name;
@@ -110,11 +114,13 @@ export class ShoppingComponent implements OnInit {
     }
   }
 
+  /* rubric17 */
   inStockChange(event: boolean) {
     this.selectedInStockOnly = event;
     this.filterProductList();
   }
 
+  /* rubric18, rubric33 */
   sortByChange(event: any) {
     this.selectedSortBy = event.currentTarget.value;
     const selectedSortBy = this.selectedSortBy;
@@ -153,6 +159,7 @@ export class ShoppingComponent implements OnInit {
     }
   }
 
+  /* rubric30 */
   addToCart(productName: string, addToCartQuantity: number) {
     console.log(productName + '      ' + addToCartQuantity);
     for (const product of this.filteredProductList) {
