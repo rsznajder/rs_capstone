@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   /* rubric34 */
   { path: 'shopping', component: ShoppingComponent },
+  /* rubric56 */
   { path: 'cart', component: CartComponent },
   /* rubric46 */
   { path: 'product', component: ProductComponent },
