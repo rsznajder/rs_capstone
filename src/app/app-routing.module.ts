@@ -9,6 +9,7 @@ import { ShoppingComponent } from './pages/shopping/shopping.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  /* rubric13 */
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'shopping', component: ShoppingComponent },
