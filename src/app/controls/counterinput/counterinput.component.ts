@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 
+/* rubric53 */
 @Component({
   selector: 'app-counterinput',
   templateUrl: './counterinput.component.html',
@@ -33,6 +34,7 @@ export class CounterInputComponent {
     this.counterChange.emit(this.counter);
   }
 
+  /* rubric53, rubric55 */
   onValueChange(event: any) {
     console.log(event);
     console.log(typeof event);

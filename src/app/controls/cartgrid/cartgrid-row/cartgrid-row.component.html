@@ -1,11 +1,14 @@
+<!-- rubric47 -->
 <td class="text-center"><img id="cartgid-row-img" [src]="product.imagelink" [alt]="product.name"></td>
 <td>{{product.name}}</td>
 <td class="text-center">{{product.price | currency:'USD':'symbol':'1.2-4'}}</td>
 <td class="text-center">
   <div id="cartgid-row-quantity-cell">
+    <!-- rubric53, rubric55 onCounterChange() -->
     <app-counterinput [(counter)]="productQuantity" (counterChange)="onCounterChange($event)">  
     </app-counterinput>
   </div>
 </td>
 <td class="text-right">{{product.netSum | currency:'USD':'symbol':'1.2-4'}}</td>
+<!-- rubric54 onRemoveClick -->
 <td class="text-center"><button id="removeRow" class="btn btn-outline-secondary" (click)="onRemoveClick()">x</button></td>

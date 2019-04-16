@@ -3,6 +3,7 @@ import { CartProduct } from 'src/app/rest/dto/cartproduct';
 import { CartGridRowEvent } from './cartgrid-row.event';
 import { CartGridRowEventTypes } from './cartgrid-roweventtypes.enum';
 
+/* rubric47 */
 @Component({
   selector: '[app-cartgrid-row]',
   templateUrl: './cartgrid-row.component.html',
@@ -15,6 +16,7 @@ export class CartGridRowComponent implements OnInit {
 
   constructor() { }
 
+  /* rubric53 - reemits an update event to parent */
   onCounterChange(event: number) {
     if (event && event > 0) {
       this.productQuantity = <number>event;
@@ -24,6 +26,7 @@ export class CartGridRowComponent implements OnInit {
     console.log('product ' + this.product.name + ' onCounterChange: ' + this.productQuantity);
   }
 
+  /* rubric53, rubric54 - reemits a remove event to parent */
   onRemoveClick() {
     const productClone = <CartProduct>Object.assign({}, this.product);
     this.rowChange.emit(new CartGridRowEvent(productClone, null, CartGridRowEventTypes.rowRemoved));

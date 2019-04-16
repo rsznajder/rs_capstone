@@ -5,8 +5,10 @@
     <h2 class="d-none">Products list in the cart</h2>        
     <div id="product-row" class="d-flex align-content-center flex-row">
         <div class="p-2 cart-item-width70">
+            <!-- rubric47 -->
             <app-cartgrid></app-cartgrid>
         </div>
+        <!-- rubric49 [begin] -->
         <div id="cart-right-col" class="p-2 cart-item-width30 mx-auto">
             <p id="cart-right-title" class="text-center"><b>Cart summary</b></p>
             <div class="table-responsive-md">
@@ -36,14 +38,18 @@
                 </table>
             </div>
         </div>
+        <!-- rubric49 [end] -->
     </div>
     </section>
     <div class="p-2 form-layout-width70">
         <div *ngIf="(_cartService.productInCartList.length > 0)" class="container">   
             <section class="w-100">
                 <h2>Enter Shipping Details</h2>
+                <!-- rubric48 [begin] -->
                 <form [formGroup]="orderForm">
+                    <!-- rubric51 [begin] -->
                     <div *ngFor="let alert of alerts">
+                        <!-- rubric51 -->
                         <div *ngIf="alert.type==='success'">
                             <alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
                                 (onClosed)="onClosed(alert)">
@@ -52,17 +58,20 @@
                                 Shipping cost::&nbsp;{{this._cartService.defaultShippingCost | currency:'USD':'symbol':'1.2-4'}}
                             </alert>
                         </div>
+                        <!-- rubric52 -->
                         <div *ngIf="alert.type!=='success'">
                             <alert [type]="alert.type" [dismissible]="true" [dismissOnTimeout]="alert.timeout" 
                                 (onClosed)="onClosed(alert)">{{ alert.msg }}
                             </alert>
                         </div>
                     </div>
+                    <!-- rubric51 [end] -->
                     <div class="form-group row row-ie">
                         <!-- first name -->
                         <label for="firstName" class="col-lg-1 col-md-2 col-sm-12 col-form-label form-long-label">First Name*</label> 
                         <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
                             <input formControlName="firstName" type="text" class="form-control" placeholder="Please enter your first name (required)">
+                            <!-- rubric52 - an example of error msg -->
                             <span class="formcontrol-error float-right"
                                 *ngIf="validateForm && !orderForm.get('firstName').value">First name is required.
                             </span>
@@ -136,11 +145,13 @@
                         <label class="col-lg-1 col-md-2 d-none d-md-block col-form-label form-long-label">&nbsp;</label> 
                         <div class="col-lg-5 col-md-4 col-sm-12 form-control-block-mw">
                             <span [ngClass]="{'float-left': isIntExplorerBrowser, 'float-right': !isIntExplorerBrowser}">
+                                <!-- rubric50 -->
                                 <button name="submit" class="btn btn-primary" (click)="onSubmit()">Order now</button>
                             </span>
                         </div>
                     </div>
                 </form>
+                <!-- rubric48 [end] -->
             </section>
         </div>
     </div>

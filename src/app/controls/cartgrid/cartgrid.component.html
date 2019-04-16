@@ -1,3 +1,4 @@
+<!-- rubric47 -->
 <div>
     <div *ngIf="!cartIsEmpty()">
         <div class="table-responsive-md">
@@ -13,6 +14,7 @@
                 </tr>
               </thead>
               <tbody>
+                  <!-- rubric53 onRowChange -->
                   <tr class="cart-row" app-cartgrid-row *ngFor="let product of _cartService.productInCartList" 
                     [product]="product" (rowChange)="onRowChange($event)"></tr>
               </tbody>

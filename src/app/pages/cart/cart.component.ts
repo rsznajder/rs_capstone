@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
     this.alerts = [];
     console.log('model-based form submitted');
     console.log(this.orderForm);
+    /* rubric52 */
     if (!this.orderForm.valid) {
       this.validateForm = true;
       this.showErrorAlert();
@@ -47,6 +48,7 @@ export class CartComponent implements OnInit {
     this.showSuccessInfo();
   }
 
+  /* rubric52 */
   showErrorAlert(): void {
     this.alerts.push({
       type: 'warning',
@@ -55,6 +57,7 @@ export class CartComponent implements OnInit {
     });
   }
 
+  /* rubric51 */
   showSuccessInfo(): void {
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -66,8 +69,6 @@ export class CartComponent implements OnInit {
       type: 'success',
       timeout: 3000
     });
-    /* msg: 'Your order has been submitted.<br>' + 'Total cost:' + formatter.format(this._cartService.cartGrossTotalSum) +
-            '   Shipping cost: ' + formatter.format(this._cartService.defaultShippingCost), */
   }
  
   onClosed(dismissedAlert: AlertComponent): void {
